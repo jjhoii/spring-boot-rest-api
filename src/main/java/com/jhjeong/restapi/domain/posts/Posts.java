@@ -1,5 +1,6 @@
 package com.jhjeong.restapi.domain.posts;
 
+import javax.persistence.GeneratedValue;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import javax.persistence.Id;
 public class Posts {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     @Column(length = 500, nullable = false)
