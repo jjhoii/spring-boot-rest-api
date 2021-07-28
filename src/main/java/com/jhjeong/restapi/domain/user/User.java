@@ -14,37 +14,37 @@ import javax.validation.constraints.Min;
 @Entity
 public class User extends BaseTimeEntity {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+  @Id
+  @GeneratedValue
+  private Long id;
 
-    @Column(nullable = false)
-    private String name;
+  @Column(nullable = false)
+  private String name;
 
-    @Column(nullable = false)
-    @Email
-    private String email;
+  @Column(nullable = false)
+  @Email
+  private String email;
 
-    @Min(0)
-    @Max(200)
-    private Integer age;
+  @Min(0)
+  @Max(200)
+  private Integer age;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Role role;
+  @Enumerated(EnumType.STRING)
+  @Column(nullable = false)
+  private Role role;
 
-    @Builder
-    public User(String name, String email, Integer age, Role role) {
-        this.name = name;
-        this.email = email;
-        this.age = age;
-        this.role = role;
-    }
+  @Builder
+  public User(String name, String email, Integer age, Role role) {
+    this.name = name;
+    this.email = email;
+    this.age = age;
+    this.role = role;
+  }
 
-    public User update(String name, Integer age) {
-        this.name = name;
-        this.age = age;
+  public User update(String name, Integer age) {
+    this.name = name;
+    this.age = age;
 
-        return this;
-    }
+    return this;
+  }
 }

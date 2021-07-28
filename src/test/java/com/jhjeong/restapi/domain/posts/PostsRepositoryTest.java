@@ -14,35 +14,33 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest
 class PostsRepositoryTest {
 
-    @Autowired
-    PostsRepository postsRepository;
+  @Autowired
+  PostsRepository postsRepository;
 
-    @AfterEach
-    public void cleanup() {
-        postsRepository.deleteAll();
-    }
+  @AfterEach
+  public void cleanup() {
+    postsRepository.deleteAll();
+  }
 
-    // 게시글 저장
-    @Test
-    public void writeAndReadPost() {
-        // given
-        String title = "title";
-        String content = "content";
-        String author = "author";
+  // 게시글 저장
+  @Test
+  public void writeAndReadPost() {
+    // given
+    String title = "title";
+    String content = "content";
+    String author = "author";
 
-        // when
-        postsRepository.save(Posts.builder()
-            .title(title)
-            .content(content)
-            .author(author)
-            .build());
-        List<Posts> all = postsRepository.findAll();
+    // when
+    postsRepository.save(Posts.builder()
+        .title(title)
+        .content(content)
+        .author(author)
+        .build());
+    List<Posts> all = postsRepository.findAll();
 
-        // then
-        assertThat(all.get(0).getTitle()).isEqualTo(title);
-        assertThat(all.get(0).getContent()).isEqualTo(content);
-        assertThat(all.get(0).getAuthor()).isEqualTo(author);
-    }
-
-
+    // then
+    assertThat(all.get(0).getTitle()).isEqualTo(title);
+    assertThat(all.get(0).getContent()).isEqualTo(content);
+    assertThat(all.get(0).getAuthor()).isEqualTo(author);
+  }
 }
