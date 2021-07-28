@@ -2,6 +2,7 @@ package com.jhjeong.restapi.domain.posts;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -42,5 +43,24 @@ class PostsRepositoryTest {
     assertThat(all.get(0).getTitle()).isEqualTo(title);
     assertThat(all.get(0).getContent()).isEqualTo(content);
     assertThat(all.get(0).getAuthor()).isEqualTo(author);
+  }
+
+  // 시간 등록
+  @Test
+  public void storeBaseTimeEntity() {
+    // given
+    LocalDateTime now = LocalDateTime.now();
+    postsRepository.save(Posts.builder()
+        .title("title")
+        .content("content")
+        .author("author")
+        .build());
+
+    // when
+    List<Posts> all = postsRepository.findAll();
+
+    // then
+    assertThat(all.get(0).getCreatedDate()).isAfterOrEqualTo(now);
+    assertThat(all.get(0).getModifiedDate()).isAfterOrEqualTo(now);
   }
 }
