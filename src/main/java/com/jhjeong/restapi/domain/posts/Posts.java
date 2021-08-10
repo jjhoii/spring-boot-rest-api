@@ -1,7 +1,9 @@
 package com.jhjeong.restapi.domain.posts;
 
 import com.jhjeong.restapi.domain.BaseTimeEntity;
+import com.jhjeong.restapi.domain.user.User;
 import javax.persistence.GeneratedValue;
+import javax.persistence.ManyToOne;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +29,9 @@ public class Posts extends BaseTimeEntity {
 
   private String author;
 
+  @ManyToOne
+  private User user;
+
   @Builder
   public Posts(String title, String content, String author) {
     this.title = title;
@@ -37,5 +42,9 @@ public class Posts extends BaseTimeEntity {
   public void update(String title, String content) {
     this.title = title;
     this.content = content;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 }
