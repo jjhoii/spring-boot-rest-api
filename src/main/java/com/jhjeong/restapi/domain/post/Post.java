@@ -1,4 +1,4 @@
-package com.jhjeong.restapi.domain.posts;
+package com.jhjeong.restapi.domain.post;
 
 import com.jhjeong.restapi.domain.BaseTimeEntity;
 import com.jhjeong.restapi.domain.user.User;
@@ -15,7 +15,7 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Posts extends BaseTimeEntity {
+public class Post extends BaseTimeEntity {
 
   @Id
   @GeneratedValue
@@ -33,7 +33,7 @@ public class Posts extends BaseTimeEntity {
   private User user;
 
   @Builder
-  public Posts(String title, String content, String author) {
+  public Post(String title, String content, String author) {
     this.title = title;
     this.content = content;
     this.author = author;

@@ -1,27 +1,27 @@
 package com.jhjeong.restapi.web.dto;
 
-import com.jhjeong.restapi.domain.posts.Posts;
+import com.jhjeong.restapi.domain.post.Post;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class PostsSaveRequestDto {
+public class PostSaveRequestDto {
 
   private String title;
   private String content;
   private String author;
 
   @Builder
-  public PostsSaveRequestDto(String title, String content, String author) {
+  public PostSaveRequestDto(String title, String content, String author) {
     this.title = title;
     this.content = content;
     this.author = author;
   }
 
-  public Posts toEntity() {
-    return Posts.builder()
+  public Post toEntity() {
+    return Post.builder()
         .title(title)
         .content(content)
         .author(author)

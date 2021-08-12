@@ -1,7 +1,7 @@
 package com.jhjeong.restapi.domain.user;
 
 import com.jhjeong.restapi.domain.BaseTimeEntity;
-import com.jhjeong.restapi.domain.posts.Posts;
+import com.jhjeong.restapi.domain.post.Post;
 import java.util.HashSet;
 import java.util.Set;
 import lombok.*;
@@ -36,7 +36,7 @@ public class User extends BaseTimeEntity {
   private Role role;
 
   @OneToMany(mappedBy = "user")
-  private Set<Posts> posts = new HashSet<>();
+  private Set<Post> posts = new HashSet<>();
 
   @Builder
   public User(String name, String email, Integer age, Role role) {
@@ -64,7 +64,7 @@ public class User extends BaseTimeEntity {
     return this;
   }
 
-  public User addPosts(Posts posts) {
+  public User addPosts(Post posts) {
     this.posts.add(posts);
     posts.setUser(this);
 

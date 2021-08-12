@@ -1,4 +1,4 @@
-package com.jhjeong.restapi.domain.posts;
+package com.jhjeong.restapi.domain.post;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -13,14 +13,14 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-class PostsRepositoryTest {
+class PostRepositoryTest {
 
   @Autowired
-  PostsRepository postsRepository;
+  PostRepository postRepository;
 
   @AfterEach
   public void cleanup() {
-    postsRepository.deleteAll();
+    postRepository.deleteAll();
   }
 
   // 게시글 저장
@@ -32,12 +32,12 @@ class PostsRepositoryTest {
     String author = "author";
 
     // when
-    postsRepository.save(Posts.builder()
+    postRepository.save(Post.builder()
         .title(title)
         .content(content)
         .author(author)
         .build());
-    List<Posts> all = postsRepository.findAll();
+    List<Post> all = postRepository.findAll();
 
     // then
     assertThat(all.get(0).getTitle()).isEqualTo(title);
@@ -50,14 +50,14 @@ class PostsRepositoryTest {
   public void storeBaseTimeEntity() {
     // given
     LocalDateTime now = LocalDateTime.now();
-    postsRepository.save(Posts.builder()
+    postRepository.save(Post.builder()
         .title("title")
         .content("content")
         .author("author")
         .build());
 
     // when
-    List<Posts> all = postsRepository.findAll();
+    List<Post> all = postRepository.findAll();
 
     // then
     assertThat(all.get(0).getCreatedDate()).isAfterOrEqualTo(now);

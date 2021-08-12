@@ -1,5 +1,5 @@
 package com.jhjeong.restapi.web;
 
-public class PostsController {
+public class PostController {
 
 }
